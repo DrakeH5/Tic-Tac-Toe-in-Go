@@ -80,20 +80,22 @@ func main() {
 			}
 		}
 		//tie check
-		tie := true
-		for row := 0; row < 2; row++ {
-			for column := 0; column < 2; column++ {
-				if grid[column][row] == " " {
-					tie = false
+		if gameOver == false {
+			tie := true
+			for row := 0; row < 2; row++ {
+				for column := 0; column < 2; column++ {
+					if grid[column][row] == " " {
+						tie = false
+					}
 				}
 			}
-		}
-		if tie == true {
-			gameOver = true
-			fmt.Println("Tie!")
-		} else {
-			//Y moves
-			grid = Ymoves(grid)
+			if tie == true {
+				gameOver = true
+				fmt.Println("Tie!")
+			} else {
+				//Y moves
+				grid = Ymoves(grid)
+			}
 		}
 	}
 	//draw board
@@ -115,4 +117,3 @@ func Ymoves(grid [3][3]string) [3][3]string {
 	return grid
 }
 
-//TODO: fix tie not working and add minimax ai
